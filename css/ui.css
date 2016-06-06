@@ -6,6 +6,10 @@ html,
 body {
   height:100%;
   width:100%;
+
+  overflow:hidden;
+
+  font-family: 'Dosis', sans-serif;
 }
 
 .navbar {
@@ -39,6 +43,8 @@ body {
 }
 
 .sidebar {
+  position:absolute;
+  float:left;
   user-select:none;
     -ms-user-select:none;
     -webkit-user-select:none;
@@ -117,4 +123,55 @@ body {
   color: #FFFFFF;
 
   margin-bottom: 20px;
+}
+
+.content {
+  margin-left: 275px;
+}
+
+.content {
+  padding:20px;
+}
+.content h1 {
+  font-weight:500;
+  margin:0;
+}
+
+.welcome {
+  padding:20px;
+}
+
+.welcome h1 {
+  font-size: 1.5em;
+}
+
+.welcome-recent {
+  overflow-x:auto;
+  width:100%;
+}
+
+.recent-container {
+  background-color: #FFFFFF;
+  border-radius:5px;
+
+  display: inline-block;
+
+  float:left;
+
+  width:300px;
+  height:300px;
+
+  padding:20px;
+  margin:10px;
+}
+
+.recent-header h2 {
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: 400;
+}
+
+.recent-info {
+  position: absolute;
+  bottom:0;
 }
