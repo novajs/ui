@@ -1,0 +1,120 @@
+/*
+ * UI CSS.
+ */
+
+html,
+body {
+  height:100%;
+  width:100%;
+}
+
+.navbar {
+  margin-bottom:0 !important;
+}
+
+.navbar-header,
+.navbar-default,
+.navbar-brand {
+  height:75px !important;
+}
+
+.navbar-default {
+  background-color: #f7f7f7 !important;
+
+  /** border bottom **/
+  box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.20);
+    -webkit-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.20);
+    -moz-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.20);
+}
+
+.navbar-logo {
+  padding-top:2px;
+  color: #000000;
+  font-size:2em;
+}
+
+.ui {
+  max-height: calc(100% - 75px);
+  height:100%;
+}
+
+.sidebar {
+  user-select:none;
+    -ms-user-select:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+
+  height:100%;
+  width: 275px;
+  background-color: #778484;
+}
+
+.bottom {
+  position: fixed !important;
+  height: 75px;
+  background-color:#FFFFFF;
+  width:100%;
+  bottom:0;
+}
+
+.bottom-credit {
+  font-size:1.1em;
+  font-weight:300;
+  color: #000000;
+  line-height:75px;
+}
+
+.nav-links {
+  padding:0;
+  margin:0;
+
+  padding:10px;
+  list-style: none;
+}
+
+.nav-links li {
+  text-align: center;
+  font-size:1em;
+  font-weight: 500;
+  color: #FFFFFF !important;
+
+  padding:5px;
+}
+
+.nav-links li a {
+  color: #FFFFFF;
+}
+
+.nav-links li:hover {
+  border-radius: 2px;
+  background-color: #596363;
+}
+
+.nav-links li a:hover {
+  text-decoration: none !important;
+}
+
+.user-profile {
+  padding: 7px;
+}
+
+.user-image {
+  padding:20px;
+  text-align:center;
+}
+
+.user-image img {
+  height: 75px;
+  width: 75px;
+  border-radius:90px;
+}
+
+.user-info {
+  text-align:center;
+
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #FFFFFF;
+
+  margin-bottom: 20px;
+}
