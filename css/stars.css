@@ -1,0 +1,36 @@
+@-webkit-keyframes stars-move {
+	from {
+		background-position: 0px 0px;
+	}
+	to {
+		background-position: 0px 360px;
+	}
+}
+
+#stars-1,
+#stars-2,
+#stars-3 {
+  z-index:-100 !important;
+}
+
+#stars-1 {
+	background: url("img/stars-1.png") repeat 0% 0%;
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 21;
+	-webkit-animation-name: stars-move;
+	-webkit-animation-duration: 4s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+#stars-2 {
+	background: url("img/stars-2.png") repeat 0% 0%;
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 22;
+	-webkit-animation-name: stars-move;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
