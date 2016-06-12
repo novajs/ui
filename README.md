@@ -1,6 +1,6 @@
-# Triton UI
+![Triton](http://s33.postimg.org/ikmguyetr/390f93cb_1905_4135_ba99_89fc94e2bb90_300x_300x.png)
 
-This README outlines the details of collaborating on this Ember application.
+# Triton UI
 
 ## Prerequisites
 
