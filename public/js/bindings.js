@@ -4,6 +4,14 @@
  * Not going to lie, I *really* hate frontend development.
  **/
 
+import Ember from 'ember';
+
+export function api(params/*, hash*/) {
+  return params;
+}
+
+export default Ember.Helper.helper(api);
+
 'use strict';
 
 var NovaJS = function() {

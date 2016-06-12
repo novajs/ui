@@ -1,23 +1,9 @@
 {
-  "name": "novajs-ui",
-  "authors": [
-    "Jared Allard <jaredallard@outlook.com>"
-  ],
-  "description": "Web Based IDE",
-  "main": "index.html",
-  "keywords": [
-    "ide",
-    "ace",
-    "term.js"
-  ],
-  "license": "MIT",
-  "homepage": "https://jaredallard.me/novajs",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "name": "ui",
+  "dependencies": {
+    "ember": "~2.6.0",
+    "ember-cli-shims": "0.1.1",
+    "ember-cli-test-loader": "0.2.2",
+    "ember-qunit-notifications": "0.1.0"
+  }
 }
