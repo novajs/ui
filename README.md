@@ -1,4 +1,4 @@
-![Triton](http://s33.postimg.org/ikmguyetr/390f93cb_1905_4135_ba99_89fc94e2bb90_300x_300x.png)
+![Triton](https://github.com/tritonjs/ui/raw/master/public/css/img/tb.png)
 
 # Triton UI
 
