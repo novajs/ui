@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>NovaJS</title>
+    <title>Triton</title>
 
     {{content-for "head"}}
 
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="assets/ui.css">
 
     <!-- Fonts and icons -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons" />
 
     <!-- Bootstrap -->
@@ -22,6 +22,7 @@
     {{content-for "head-footer"}}
   </head>
   <body>
+    <canvas id='bg-stars'></canvas>
     {{content-for "body"}}
 
     <script src="assets/vendor.js"></script>
@@ -30,10 +31,18 @@
     {{content-for "body-footer"}}
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
     <script src="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pixi.js/1.6.1/pixi.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/js/validator.min.js"></script>
+    <script src="/js/stars.js"></script>
+    <script src="/js/ui.js"></script>
+    <script type="text/javascript">
+      $.material.init()
+    </script>
   </body>
 </html>
