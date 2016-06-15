@@ -83,6 +83,17 @@
   text-align: center;
 }
 
+.user-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-image img {
+  height: 75px;
+  width: auto;
+  border-radius: 90px;
+}
+
 .login .signup a {
   font-weight: bold;
   text-decoration: underline;
