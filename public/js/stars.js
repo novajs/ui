@@ -34,7 +34,7 @@ var BGStars = function()
                 , y = Math.random() * _BGStars.height
                 , vX = this.randBtwn(-3, 3)
                 , vY = this.randBtwn(-3, 3)
-                , radius = this.randBtwn(0.5, 4.9);
+                , radius = this.randBtwn(1, 4.9);
 
             _BGStars.points.push({
                 x: x,

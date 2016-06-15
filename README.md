@@ -1,10 +1,10 @@
 ![Triton](https://github.com/tritonjs/ui/raw/master/public/css/img/tb.png)
 
-# Triton UI
+User Interface for a Modern Open Source Classroom.
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
+You will need the following things properly installed on your computer for UI development.
 
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM)
