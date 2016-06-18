@@ -33,6 +33,13 @@ Triton.prototype.request = function(method, url, params) {
       dataType: 'json',
       cache: false,
       success: function(data) {
+        if(!data.success) {
+          return console.error('API Reported Error', data);
+        }
+
+        // hotlink.
+        data = data.data;
+        
         return fulfill(data);
       },
       failure: function(xhr, status, err) {

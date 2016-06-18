@@ -26,7 +26,15 @@
     </div>
   </div>
 
-  <div class='content'></div>
+  <div class='content'>
+    {{#each model.assignments as |assignment|}}
+      {{#assignment-box name=assignment.name}}
+        {{assignment.info.desc}}
+      {{/assignment-box}}
+    {{else}}
+      <h1>Failed to Obtain Assignment List</h1>
+    {{/each}}
+  </div>
 </div>
 
 <div class="navbar navbar-default bottom">
