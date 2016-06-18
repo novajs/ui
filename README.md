@@ -2,6 +2,15 @@
 
 User Interface for a Modern Open Source Classroom.
 
+## TODO
+
+* [ ] Create Settings Dialog, implement ontop of /v1/user/update
+* [ ] Create Assignment management UI.
+* [ ] Polish the dashboard UI, try to theme it more.
+* [ ] To the stars when moving to workspace.
+* [ ] Write UI tests.
+
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer for UI development.

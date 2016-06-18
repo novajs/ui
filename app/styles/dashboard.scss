@@ -38,12 +38,15 @@
 }
 
 .navbar-default {
+  z-index: 10;
   background-color: #f7f7f7 !important;
 
   /** border bottom **/
-  box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.20);
-    -webkit-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.20);
-    -moz-box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.20);
+
+  $boxshadow: 0px 2px 1px 0px rgba(102, 93, 93, 0.2);
+  box-shadow:           $boxshadow;
+    -webkit-box-shadow: $boxshadow;
+    -moz-box-shadow:    $boxshadow;
 }
 
 .navbar-logo {
@@ -185,25 +188,42 @@
   width:100%;
 }
 
+
+$ASIGNPAD: 0px 20px 3px 20px;
+
 .Assignment {
   background-color: #FFFFFF;
   border-radius:2px;
 
   display: inline-block;
 
+  border: 1px solid #dbd8d8;
+  border-width: 1px 1px 2px 1px;
+
   float:left;
 
   width:300px;
   height:300px;
 
-  padding:20px;
   margin:10px;
 }
 
+.recent-header {
+  border-bottom: 1px solid #dbd8d8;
+  border-bottom-width: 1px 1px 2px 1px;
+
+  width:100%;
+}
+
 .recent-header h2 {
-  text-align: center;
+  padding: $ASIGNPAD;
   font-size: 1.6em;
   font-weight: 400;
+}
+
+.recent-inner {
+  margin-top:20px;
+  padding: $ASIGNPAD;
 }
 
 .recent-info {
