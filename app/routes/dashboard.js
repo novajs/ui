@@ -2,14 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return Ember.$.ajax({
-      type: 'GET',
-      url: 'http://127.0.0.1:8000/v1/users',
-      headers: {
-        'Authentication': $.cookie('triton_userapikey')
+    let triton = new Triton(Ember.$)
+    return triton.get('users').then(function(data) {
+      if(!data.success) {
+        return console.error('API Reported Error', data);
       }
-    }).then(function(data) {
-      if(!data.success) return console.error('API Reported Error', data);
 
       // hotlink.
       data = data.data;

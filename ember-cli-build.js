@@ -4,7 +4,18 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+    outputPaths: {
+      app: {
+        css: {
+          // Why can't we have wildcards?
+          'dashboard': '/css/dashboard.css',
+          'login': '/css/login.css',
+          'staging': '/css/staging.css',
+          'stars': '/css/stars.css',
+          'app': '/css/app.css'
+        }
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
