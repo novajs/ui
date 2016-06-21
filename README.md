@@ -11,7 +11,7 @@ User Interface for a Modern Open Source Classroom.
 * [ ] Polish the dashboard UI, try to theme it more.
 * [ ] To the stars when moving to workspace.
 * [ ] Write UI tests.
-* [ ] While we block UI on getting user info, CACHE SPECFICALLY user data. Assignment can go off blocking.
+* [ ] While we block UI on getting user info, CACHE SPECIFICALLY user data. Assignment can go off blocking.
 
 
 ## Prerequisites

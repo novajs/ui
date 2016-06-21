@@ -1,0 +1,33 @@
+{{#dashboard-header user=model}}
+  <div class='settings-wrapper'>
+    <div class='settings-title'>
+      <h1>Settings</h1>
+    </div>
+
+    <div class='settings-options'>
+      <form class='form-group settings-option'>
+        <label class='control-label' for='setting-display_name'>Display Name</label>
+        <input id='setting-display_name' class='settings-input form-control' type='text' placeholder='{{model.display_name}}'/>
+        <div class="help-block with-errors"></div>
+      </form>
+
+      <form class='form-group settings-option' data-toggle="validator">
+        <label class='control-label' for='setting-email'>E-mail</label>
+        <input id='setting-email' class='settings-input form-control' type='email' placeholder='{{model.email}}'/>
+        <div class="help-block with-errors"></div>
+      </form>
+
+      <form class='form-group settings-option' data-toggle="validator">
+        <label class='control-label' for='setting-email'>Password</label>
+        <input id='setting-email' class='settings-input form-control' type='password' placeholder='Required: Password' required/>
+        <div class="help-block with-errors"></div>
+      </form>
+
+      <br />
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Submit
+      </button>
+    </div>
+  </div>
+{{/dashboard-header}}

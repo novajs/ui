@@ -1,0 +1,44 @@
+<div class="navbar navbar-default">
+  <div>
+    <div class="navbar-header">
+      <img src="/css/img/tbN.png" />
+    </div>
+  </div>
+</div>
+
+<!-- UI Wrapper -->
+<div class='ui'>
+  <div class='sidebar'>
+    <div class='user-profile'>
+      <div class='user-image-dash'>
+        <img src="{{user.image}}" />
+      </div>
+
+      <div class='user-info'>
+        {{user.name}}
+      </div>
+
+
+      <ul class='nav-links'>
+        <li><a href="/dashboard">Assignments</a></li>
+        <li><a href="/dashboard/settings">Settings</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='content'>
+    {{yield}}
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="navbar navbar-default bottom">
+  <div class='bottom-credit pull-left'>
+    &copy; 2016 Jared Allard
+  </div>
+
+  <div class='actions pull-right'>
+    <a href="https://github.com/tritonjs">github.com/tritonjs</a>
+  </div>
+</div>
