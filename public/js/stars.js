@@ -104,6 +104,10 @@ var BGStars = function()
 }
 
 $(document).ready(function() {
+  if(window.location.pathname !== '/login') return console.info('not generating stars');
+  
+  console.log(window.location.pathname)
+
   $("#bg-stars").attr("width", $(window).width());
   $("#bg-stars").attr("height", $(window).height());
 

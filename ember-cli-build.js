@@ -9,6 +9,7 @@ module.exports = function(defaults) {
         css: {
           // Why can't we have wildcards?
           'dashboard': '/css/dashboard.css',
+          'settings': '/css/settings.css',
           'login': '/css/login.css',
           'staging': '/css/staging.css',
           'stars': '/css/stars.css',

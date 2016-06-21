@@ -1,48 +1,9 @@
-<div class="navbar navbar-default">
-  <div>
-    <div class="navbar-header">
-      <img src="/css/img/tbN.png" />
-    </div>
-  </div>
-</div>
-
-<div class='ui'>
-  <div class='sidebar'>
-    <div class='user-profile'>
-      <div class='user-image-dash'>
-        <img src="{{model.image}}" />
-      </div>
-
-      <div class='user-info'>
-        {{model.display_name}}
-      </div>
-
-
-      <ul class='nav-links'>
-        <li><a href="assignments">Assignments</a></li>
-        <li><a href="settings">Settings</a></li>
-        <li><a href="contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class='content'>
-    {{#each model.assignments as |assignment|}}
-      {{#assignment-box name=assignment.name}}
-        {{assignment.info.desc}}
-      {{/assignment-box}}
-    {{else}}
-      <h1>Failed to Obtain Assignment List</h1>
-    {{/each}}
-  </div>
-</div>
-
-<div class="navbar navbar-default bottom">
-  <div class='bottom-credit pull-left'>
-    &copy; 2016 Jared Allard
-  </div>
-
-  <div class='actions pull-right'>
-    <a href="https://github.com/tritonjs">github.com/tritonjs</a>
-  </div>
-</div>
+{{#dashboard-header user=model}}
+  {{#each model.assignments as |assignment|}}
+    {{#assignment-box name=assignment.name}}
+      {{assignment.info.desc}}
+    {{/assignment-box}}
+  {{else}}
+    <h1>Failed to Obtain Assignment List</h1>
+  {{/each}}
+{{/dashboard-header}}
