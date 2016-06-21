@@ -4,11 +4,14 @@ User Interface for a Modern Open Source Classroom.
 
 ## TODO
 
-* [ ] Create Settings Dialog, implement ontop of /v1/user/update
+* [x] Create Settings Dialog
+* [x] Refactor how we share HTML for pages via components.
+* [ ] Setup settings dialog to use /v1/users/update
 * [ ] Create Assignment management UI.
 * [ ] Polish the dashboard UI, try to theme it more.
 * [ ] To the stars when moving to workspace.
 * [ ] Write UI tests.
+* [ ] While we block UI on getting user info, CACHE SPECFICALLY user data. Assignment can go off blocking.
 
 
 ## Prerequisites
