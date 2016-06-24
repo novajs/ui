@@ -9,6 +9,12 @@
 'use strict';
 
 var Triton = function(jQuery) {
+  if(typeof window.API_CONFIG === 'object') {
+    this.url = window.API_CONFIG.host.replace(/\/$/g, '')+'/v'+window.API_CONFIG.version
+
+    console.log('TRITON: #API_CONFIG ->', this.url);
+  }
+
   this.url = 'http://127.0.0.1:8000/v1';
   this.$   = jQuery || $;
 
@@ -39,7 +45,7 @@ Triton.prototype.request = function(method, url, params) {
 
         // hotlink.
         data = data.data;
-        
+
         return fulfill(data);
       },
       failure: function(xhr, status, err) {
