@@ -2,6 +2,8 @@ function md5cycle(e,t){var n=e[0],r=e[1],i=e[2],s=e[3];n=ff(n,r,i,s,t[0],7,-6808
 
 'use strict';
 
+var triton = new Triton($);
+
 var gravatar = function(email, options) {
 	//check to make sure you gave us something
 	var options = options || {},
@@ -31,6 +33,46 @@ var gravatar = function(email, options) {
 	return base + md5(email) + "?" + params.join("&");
 }
 
+
+function updateUserInfo(emailElm, passwordElem, displaynameElm) {
+	var password    = passwordElem.val();
+	var email       = emailElm.val();
+	var displayname = displaynameElm.val();
+
+	if(!password) {
+		return passwordElem.parent().addClass('has-error');
+	}
+
+	var allOpts = [
+		{
+			type: 'email',
+			val:  email
+		},
+		{
+			type: 'display_name',
+			val:  displayname
+		}
+	];
+
+	var body = {}
+
+	allOpts.forEach(function(o) {
+		if(o.val === '' || typeof o.val === 'undefined' || o.val === null || o.val === ' ') {
+			console.log('invalid value for opt type:', o.type);
+			return;
+		}
+
+		body[o.type] = o.val;
+	});
+
+	triton.post('users/update', body)
+	.then(function(res) {
+		console.log('user info updated');
+	})
+	.catch(function(err) {
+		console.log(err);
+	})
+}
 
 $(document).ready(function() {
 	var TRITON_EMAIL = $.cookie('triton_useremail');

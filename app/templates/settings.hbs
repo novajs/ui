@@ -18,14 +18,14 @@
       </form>
 
       <form class='form-group settings-option' data-toggle="validator">
-        <label class='control-label' for='setting-email'>Password</label>
-        <input id='setting-email' class='settings-input form-control' type='password' placeholder='Required: Password' required/>
+        <label class='control-label' for='setting-password'>Password</label>
+        <input id='setting-password' class='settings-input form-control' type='password' placeholder='Required: Password' required/>
         <div class="help-block with-errors"></div>
       </form>
 
       <br />
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" onclick='updateUserInfo($("#setting-email"), $("#setting-password"), $("#setting-display_name"))'>
           Submit
       </button>
     </div>
