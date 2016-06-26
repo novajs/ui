@@ -25,18 +25,21 @@ var Triton = function(jQuery) {
 Triton.prototype.request = function(method, url, params) {
   let that = this;
 
+  if(!params) {
+    params = {};
+  }
+
   let endpoint = this.url+'/'+url;
 
   return new Promise(function(fulfill, reject) {
     console.log('TRITON:', method.toUpperCase(), endpoint);
-    that.$.ajax({
+
+    let reqopts = {
       url: endpoint,
       method: method,
       headers: {
         'Authentication': $.cookie('triton_userapikey')
       },
-      body: params,
-      dataType: 'json',
       cache: false,
       success: function(data) {
         if(!data.success) {
@@ -46,18 +49,62 @@ Triton.prototype.request = function(method, url, params) {
         // hotlink.
         data = data.data;
 
+        that.setCache(url, data);
+
         return fulfill(data);
       },
       failure: function(xhr, status, err) {
         console.error(that.url, status, err.toString());
         return reject(err)
       }
-    });
+    };
+
+    if(method !== 'get') {
+      console.log('triton: modifying reqopts to use JSON as data.')
+      reqopts.data = params
+      reqopts.dataType = 'json';
+    }
+
+    that.$.ajax(reqopts);
   })
 }
 
+
+/**
+ * Caching!
+ **/
+Triton.prototype.setCache = function(ENDPOINT, data) {
+  console.log('TRITON: CACHED ->', ENDPOINT);
+
+  var PARSED = JSON.stringify(data);
+  localStorage.setItem('cached_endpoint_'+encodeURIComponent(ENDPOINT), PARSED);
+}
+
+Triton.prototype.getCache = function(ENDPOINT) {
+  console.log('TRITON: USE CACHE ->', ENDPOINT);
+
+  return new Promise(function(fulfill, reject) {
+    var loc = localStorage.getItem('cached_endpoint_'+encodeURIComponent(ENDPOINT));
+    var PARSED = JSON.parse(loc);
+    return fulfill(PARSED);
+  });
+}
+
+Triton.prototype.invalidate = function(ENDPOINT) {
+  localStorage.removeItem('cached_endpoint_'+encodeURIComponent(ENDPOINT));
+}
+
+Triton.prototype.isCached = function(ENDPOINT) {
+  if(!localStorage.getItem('cached_endpoint_'+encodeURIComponent(ENDPOINT))) return false;
+  return true;
+}
+
 Triton.prototype.get = function(url, params) {
-    return this.request('get', url, params);
+  if(this.isCached(url)) {
+    return this.getCache(url);
+  }
+
+  return this.request('get', url, params);
 }
 
 Triton.prototype.post = function(url, params) {

@@ -67,7 +67,7 @@ function updateUserInfo(emailElm, passwordElem, displaynameElm) {
 
 	triton.post('users/update', body)
 	.then(function(res) {
-		console.log('user info updated');
+		triton.invalidate('users'); // invalidate the users info.
 	})
 	.catch(function(err) {
 		console.log(err);
