@@ -1,38 +1,27 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
     <title>Triton</title>
 
-    <script type="text/javascript" src="/js/triton.js"></script>
-
-    {{content-for "head"}}
-
     <!-- Fonts and icons -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
 
     <!-- Content for Pages -->
-    <link type="text/css" rel="stylesheet" href="/css/app.css" />
-    <link type="text/css" rel="stylesheet" href="/css/login.css" />
-    <link type="text/css" rel="stylesheet" href="/css/dashboard.css" />
-    <link type="text/css" rel="stylesheet" href="/css/settings.css" />
+    <link type="text/css" rel="stylesheet" href="/css/app.css">
+    <link type="text/css" rel="stylesheet" href="/css/login.css">
+    <link type="text/css" rel="stylesheet" href="/css/dashboard.css">
+    <link type="text/css" rel="stylesheet" href="/css/settings.css">
 
     <script src="/config.js"></script>
-
-    {{content-for "head-footer"}}
   </head>
+
   <body>
-    <canvas id='bg-stars'></canvas>
-    {{content-for "body"}}
-
-    <script src="assets/vendor.js"></script>
-    <script src="assets/ui.js"></script>
-
-    {{content-for "body-footer"}}
+    <canvas id="bg-stars" width="1600" height="754"></canvas>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -44,6 +33,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="/js/validator.min.js"></script>
     <script src="/js/stars.js"></script>
+    <script type="text/javascript" src="/js/triton.js"></script>
     <script src="/js/ui.js"></script>
     <script type="text/javascript">
       $.material.init()
