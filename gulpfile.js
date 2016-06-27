@@ -4,17 +4,32 @@
  * <3 from Seattle.
  **/
 
-const gulp   = require('gulp');
-const babel  = require('gulp-babel');
-const gutil  = require('gulp-util');
-const pump   = require('pump');
-const uglify = require('gulp-uglify');
+/* Gulp */
+const gulp       = require('gulp');
+const gutil      = require('gulp-util');
+const pump       = require('pump');
 
-const pretty = require('pretty-bytes');
+/* JS to ES5 & uglification */
+const babel      = require('gulp-babel');
+const uglify     = require('gulp-uglify');
 
-const sass   = require('gulp-sass');
-const clean  = require('gulp-clean-css');
+/* UX */
+const pretty     = require('pretty-bytes');
 
+/* Sass */
+const sass       = require('gulp-sass');
+const clean      = require('gulp-clean-css');
+
+/* Handlebars */
+const handlebars = require('gulp-handlebars');
+const declare    = require('gulp-declare');
+const wrap       = require('gulp-wrap');
+const concat     = require('gulp-concat');
+
+
+/**
+ * Sass Transformation
+ */
 gulp.task('sass', (cb) => {
   pump([
       gulp.src('./scss/**/*.scss'),
@@ -32,6 +47,29 @@ gulp.task('sass:watch', function () {
   gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
+/**
+ * Handlebars transformations
+ **/
+gulp.task('templates', (cb) =>{
+  pump([
+      gulp.src('templates/**/*.hbs'),
+      handlebars(),
+      wrap('Handlebars.template(<%= contents %>)'),
+      declare({
+        namespace: 'TRITON.templates',
+        noRedeclare: true, // Avoid duplicate declarations
+      }),
+      concat('templates.js'),
+      gulp.dest('./public/js')
+    ],
+
+    cb
+  );
+});
+
+/**
+ * JS Transformations.
+ **/
 gulp.task('babel', (cb) => {
   pump([
       gulp.src('./js/*.js'),
@@ -45,7 +83,11 @@ gulp.task('babel', (cb) => {
   );
 })
 
+/**
+ * Main Execution
+ **/
 gulp.task('default', [
   'sass',
+  'templates',
   'babel'
 ])
