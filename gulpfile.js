@@ -1,5 +1,5 @@
 /**
- * Ember - without all the useless page controlling shit.
+ * Ember - without all the useless page controlling shit. (well, useless for me)
  *
  * <3 from Seattle.
  **/
@@ -35,7 +35,7 @@ gulp.task('sass', (cb) => {
       gulp.src('./scss/**/*.scss'),
       sass().on('error', sass.logError),
       clean({debug:true}, function(details) {
-        console.log('SCSS:', details.name, ':', pretty(details.stats.originalSize), '->', pretty(details.stats.minifiedSize));
+        console.log('SASS->minify:', details.name, ':', pretty(details.stats.originalSize), '->', pretty(details.stats.minifiedSize));
       }),
       gulp.dest('./public/css')
     ],
@@ -43,7 +43,7 @@ gulp.task('sass', (cb) => {
   );
 });
 
-gulp.task('sass:watch', function () {
+gulp.task('sass:watch', () => {
   gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
@@ -79,9 +79,17 @@ gulp.task('babel', (cb) => {
       uglify({preserveComments: 'license'}),
       gulp.dest('./public/js')
     ],
+
     cb
   );
 })
+
+/**
+ * Page builder from templates.
+ **/
+gulp.task('pages', (cb) => {
+  return cb();
+});
 
 /**
  * Main Execution
@@ -89,5 +97,6 @@ gulp.task('babel', (cb) => {
 gulp.task('default', [
   'sass',
   'templates',
-  'babel'
+  'babel',
+  'pages'
 ])
