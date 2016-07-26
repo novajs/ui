@@ -7,6 +7,7 @@ var requestAnimFrame = (function(){
           };
 })();
 
+var gr;
 var BGStars = function()
 {
     var _BGStars 	  = this;
@@ -103,14 +104,19 @@ var BGStars = function()
     }
 }
 
-$(document).ready(function() {
-  if(window.location.pathname !== '/login') return console.info('not generating stars');
-  
-  console.log(window.location.pathname)
+let main = () => {
+  if(window.location.hash !== '#/login') return console.info('not generating stars');
 
   $("#bg-stars").attr("width", $(window).width());
   $("#bg-stars").attr("height", $(window).height());
 
   var stars = new BGStars();
   stars.init();
-})
+};
+
+$(document).ready(main);
+
+if(router) {
+  console.log('stars is using router.');
+  window['ROUTER'].bind(main);
+}

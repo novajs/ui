@@ -12,6 +12,8 @@
 
 #bg-stars {
   position:fixed;
+  z-index:1;
+  pointer-events: none;
 }
 
 

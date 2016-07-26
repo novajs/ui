@@ -16,13 +16,25 @@
     <link type="text/css" rel="stylesheet" href="/css/login.css">
     <link type="text/css" rel="stylesheet" href="/css/dashboard.css">
     <link type="text/css" rel="stylesheet" href="/css/settings.css">
+    <link type="text/css" rel="stylesheet" href="/css/pace.css">
 
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
     <script src="/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.3.0/js/md5.min.js"></script>
+
+    <!-- Vendor JS not hosted online *yet* -->
+    <script src="/vendor/handlebars.js"></script>
+    <script src="/js/templates.js"></script>
+    <script src="/js/triton.js"></script>
   </head>
 
   <body>
     <canvas id="bg-stars" width="1600" height="754"></canvas>
 
+    <div id='dom'>
+
+    </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -33,16 +45,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/pixi.js/1.6.1/pixi.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-    <!-- Vendor JS not hosted online *yet* -->
-    <script src="/vendor/handlebars.js"></script>
-
-    <script src="/js/templates.js"></script>
+    <script src="/js/router.js"></script>
     <script src="/js/validator.min.js"></script>
     <script src="/js/stars.js"></script>
-    <script src="/js/triton.js"></script>
     <script src="/js/ui.js"></script>
-    <script type="text/javascript">
-      $.material.init()
-    </script>
   </body>
 </html>

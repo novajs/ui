@@ -17,7 +17,7 @@ class Triton {
       console.log('TRITON: #API_CONFIG ->', this.url);
     }
 
-    this.url = 'http://127.0.0.1:8000/v1';
+    this.url = 'http://api.tritonjs.com/v1';
     this.$   = jQuery || $;
 
     console.log('Triton API initialized.')
@@ -50,7 +50,6 @@ class Triton {
           // hotlink.
           data = data.data;
 
-          // add to cache.
           that.setCache(url, data);
 
           return fulfill(data);
@@ -72,7 +71,7 @@ class Triton {
   }
 
   post(url, params) {
-    return this.request('post', url, params);
+
   }
 
   get(url, params) {

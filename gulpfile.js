@@ -44,7 +44,7 @@ gulp.task('sass', (cb) => {
 });
 
 gulp.task('sass:watch', () => {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('./scss/**/*.scss', ['sass']);
 });
 
 /**
@@ -67,6 +67,10 @@ gulp.task('templates', (cb) =>{
   );
 });
 
+gulp.task('templates:watch', (cb) => {
+  gulp.watch('templates/**/*.hbs', ['templates'])
+})
+
 /**
  * JS Transformations.
  **/
@@ -84,12 +88,20 @@ gulp.task('babel', (cb) => {
   );
 })
 
+
+gulp.task('babel:watch', () => {
+  gulp.watch('./js/*.js', ['babel'])
+})
 /**
  * Page builder from templates.
  **/
 gulp.task('pages', (cb) => {
   return cb();
 });
+
+gulp.task('pages:watch', () => {
+  //
+})
 
 /**
  * Main Execution
@@ -98,5 +110,12 @@ gulp.task('default', [
   'sass',
   'templates',
   'babel',
+  'pages'
+])
+
+gulp.task('watch', [
+  'sass:watch',
+  'templates:watch',
+  'babel:watch',
   'pages'
 ])
