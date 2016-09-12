@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loading...</title>
+
+    <link href="css/staging.css" rel="stylesheet" type="text/css" />
+    <link href="css/stars.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class='stars' style='display:none;'>
+      <div id="stars-1"></div>
+      <div id="stars-2" style='display:none;'></div>
+    </div>
+
+    <div class='status'>
+      <div id='status'>Waiting for Docker ...</div>
+    </div>
+
+    <div class='counter'>
+      <h1 id='count'>5</h1>
+    </div>
+
+    <div class="rocket">
+      <span>
+        <i class="fin-top"></i>
+        <i class="fin-bottom"></i>
+        <i class="faya" style='display:none;'></i>
+        <i class="wastes" style='display:none;'><i></i><i></i><i></i><i></i><i></i></i>
+      </span>
+    </div>
+
+    <div class='platform'>
+      <div class='platform-hack'>
+        &nbsp;
+      </div>
+      &nbsp;
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      let openFire = () => {
+        $('.wastes').show();
+        $('.faya').show();
+      }
+
+      let setPosition = () => {
+        let target = (($(document).height() / 2) + 30);
+
+        $('.rocket').animate({
+          top: target
+        }, 1200);
+      }
+
+      let displayStatus = () => {
+
+      }
+
+      let firstStage = () => {
+        $('.stars').slideDown();
+        $('#stars-2').slideDown();
+      }
+
+      let LAUNCH = () => {
+        $('#count').html('LIFTOFF');
+
+        setTimeout(function() {
+          openFire();
+
+          setTimeout(function() {
+            $('.counter').hide();
+          }, 1000)
+
+          setTimeout(function() {
+            setPosition();
+
+            firstStage();
+            $('.platform').toggle(600);
+          }, 1250);
+        }, 500);
+      }
+
+      let counter = setInterval(function() {
+        let num = parseInt($('#count').html());
+
+        if(num === 0) {
+          LAUNCH();
+          return clearInterval(counter);
+        }
+
+        num--;
+        $('#count').html(num);
+      }, 1000)
+    </script>
+
+  </body>
+</html>

@@ -126,7 +126,7 @@ login.use(() => {
   $('#dom').html(TRITON.templates["login"]());
 })
 
-let index  = new Route('/index.html');
+let index  = new Route('/');
 index.use(() => {
   $('#dom').html(TRITON.templates["index"]());
 });
@@ -169,10 +169,22 @@ sett.use(() => {
   });
 });
 
+let logout = new Route('/dashboard/logout');
+logout.use(() => {
+  triton.invalidateCache('assignments/list');
+
+  $.cookie('triton_userapikey', undefined);
+
+  window.location = '/';
+
+  console.log('logged out user');
+});
+
 router.use(index);
 router.use(login);
 router.use(dash);
 router.use(sett);
+router.use(logout);
 
 window['ROUTER'] = router;
 

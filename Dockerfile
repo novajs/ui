@@ -1,19 +1,31 @@
-FROM node:6.2.2
+FROM nginx
+
+# install node js
+RUN apt-get update
+RUN apt-get install -y curl sudo
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN apt-get install -y nodejs
+
+# Install gulp-cli
+RUN npm install -g gulp-cli
+
+# clean html dir
+RUN rm -rf /usr/share/nginx/html
 
 # Add our files & set working dir
-ADD . /ui
-WORKDIR /ui
+ADD . /usr/share/nginx
+WORKDIR /usr/share/nginx
+RUN chmod +x /usr/share/nginx/container.sh
 
-# Don't want to include a file for this.
-RUN sh -c 'echo "deb http://httpredir.debian.org/debian jessie main non-free contrib\ndeb http://httpredir.debian.org/debian jessie-updates main non-free contrib\ndeb http://security.debian.org jessie/updates main non-free contrib" >/etc/apt/sources.list'
+RUN bash -c 'if [ ! -e "node_modules" ]; then npm install; fi'
 
-# Update sources and install python-dev for watchman
-RUN apt-get update
-RUN apt-get install -y python-dev
+# run gulp first time.
+RUN gulp
 
-# Install deps for ember
-RUN npm install
+# Environment variables
+ENV DEBUG *,-nodemon:*,-express:*,-ioredis:*
+ENV DEBUG_COLORS 1
+ENV TERM xterm
 
-EXPOSE 4200
-
-CMD ["npm", "start"]
+# execute container script.
+CMD ["bash", "-c", "chmod +x /usr/share/nginx/container.sh; /usr/share/nginx/container.sh"]

@@ -37,7 +37,7 @@ gulp.task('sass', (cb) => {
       clean({debug:true}, function(details) {
         console.log('SASS->minify:', details.name, ':', pretty(details.stats.originalSize), '->', pretty(details.stats.minifiedSize));
       }),
-      gulp.dest('./public/css')
+      gulp.dest('./html/css')
     ],
     cb
   );
@@ -60,7 +60,7 @@ gulp.task('templates', (cb) =>{
         noRedeclare: true, // Avoid duplicate declarations
       }),
       concat('templates.js'),
-      gulp.dest('./public/js')
+      gulp.dest('./html/js')
     ],
 
     cb
@@ -81,7 +81,7 @@ gulp.task('babel', (cb) => {
         presets: ['es2015']
       }),
       uglify({preserveComments: 'license'}),
-      gulp.dest('./public/js')
+      gulp.dest('./html/js')
     ],
 
     cb
