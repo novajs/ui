@@ -22,6 +22,10 @@
         <input id="login-password" type="password" class="form-control" required>
       </form>
 
+      <div id='login-error' class='error has-error has-danger' style='text-align:center;display:none;'>
+        <span style='color:red;'>Invalid Credentials</span>
+      </div>
+
       <br />
       <button id='login-submit' class="btn btn-lg btn-primary btn-block" type="submit">
           Sign in
@@ -30,7 +34,15 @@
       <br />
     </div>
     <div class='signup'>
-      Don't have an account?&nbsp;&nbsp;<a href="/register" class="new-account">Sign Up</a>
+      Don't have an account?&nbsp;&nbsp;<a href="/#/register" class="new-account">Sign Up</a>
     </div
   </div>
 </div>
+
+<script type="text/javascript">
+  $("#login-password").keyup(function(event){
+      if(event.keyCode == 13){
+          login();
+      }
+  });
+</script>

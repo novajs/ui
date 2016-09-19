@@ -17,7 +17,7 @@ class Triton {
       console.log('TRITON: #API_CONFIG ->', this.url);
     }
 
-    this.url = 'http://api.tritonjs.com/v1';
+    // ??? this.url = 'http://api.tritonjs.com/v1';
     this.$   = jQuery || $;
 
     console.log('Triton API initialized.')
@@ -75,10 +75,6 @@ class Triton {
   }
 
   get(url, params) {
-    if(this.isCached(url)) {
-      return this.getCache(url);
-    }
-
     return this.request('get', url, params);
   }
 

@@ -12,20 +12,23 @@ RUN npm install -g gulp-cli
 # clean html dir
 RUN rm -rf /usr/share/nginx/html
 
+# Environment variables
+ENV TERM xterm
+
+# Set WORKDIR
+WORKDIR /usr/share/nginx
+
 # Add our files & set working dir
 ADD . /usr/share/nginx
-WORKDIR /usr/share/nginx
 RUN chmod +x /usr/share/nginx/container.sh
 
-RUN bash -c 'if [ ! -e "node_modules" ]; then npm install; fi'
+RUN npm install
 
-# run gulp first time.
+# Run Gulp
 RUN gulp
 
-# Environment variables
-ENV DEBUG *,-nodemon:*,-express:*,-ioredis:*
-ENV DEBUG_COLORS 1
-ENV TERM xterm
+# Uninstall gulp
+RUN npm uninstall -g gulp
 
 # execute container script.
 CMD ["bash", "-c", "chmod +x /usr/share/nginx/container.sh; /usr/share/nginx/container.sh"]

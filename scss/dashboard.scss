@@ -88,6 +88,11 @@
   background-color:#FFFFFF;
   width:100%;
   bottom:0;
+
+  $boxshadow: 0px -2px 1px 0px rgba(102, 93, 93, 0.2);
+  box-shadow:           $boxshadow;
+    -webkit-box-shadow: $boxshadow;
+    -moz-box-shadow:    $boxshadow;
 }
 
 .actions,
@@ -165,10 +170,9 @@
 }
 
 .content {
+  overflow-x: auto;
   margin-left: 275px;
-}
-
-.content {
+  height: 100%;
   padding:20px;
 }
 .content h1 {
@@ -194,6 +198,7 @@
 $ASIGNPAD: 0px 20px 3px 20px;
 
 .Assignment {
+  position: relative;
   background-color: #FFFFFF;
   border-radius:2px;
 
@@ -229,6 +234,50 @@ $ASIGNPAD: 0px 20px 3px 20px;
 }
 
 .recent-info {
+  width: 100%;
   position: absolute;
   bottom:0;
+  padding: $ASIGNPAD;
+}
+
+.date {
+  line-height: 39px;
+  float:left;
+}
+
+#assignac {
+  margin:0;
+  width: 100px;
+  float: right;
+}
+
+#assignopt {
+  display: inline-block;
+  width: 100px;
+}
+
+.assignopts {
+  margin-left:-20px;
+  position: absolute;
+  left: 0;
+  height:100px;
+}
+
+
+.loading-text {
+  margin:0;
+  padding:0;
+
+  text-align: center;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.loading-text h1 {
+  margin:0;
+  padding:0;
 }

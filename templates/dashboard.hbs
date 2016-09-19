@@ -1,6 +1,6 @@
 {{{header}}}
   {{#each assignments as |assignment|}}
-    <div class='Assignment'>
+    <div class='Assignment' data-json="{{assignment.json}}">
       <div class="recent-header">
         <h2>{{assignment.name}}</h2>
       </div>
@@ -14,10 +14,26 @@
       </div>
 
       <div class="recent-info">
-
+        <a href="javascript:assignment('{{assignment.id}}')">
+          <button id='assignac' class='btn btn-primary btn-block'>
+            Start
+          </button>
+        </a>
+        <span class='date'>{{assignment.created}}</span>
       </div>
     </div>
   {{else}}
     <h1>Failed to Obtain Assignment List</h1>
   {{/each}}
+
+  <script type="text/javascript">
+    /* $('.Assignment').on('click', function(elem) {
+      var json = $(this).attr('data-json');
+      $.cookie('triton_assignmentinfo', json, {
+        path: '/',
+        domain: window.API_CONFIG.domain
+      })
+      window.location.hash = '/dashboard/assignment';
+    }) */
+  </script>
 {{{footer}}}

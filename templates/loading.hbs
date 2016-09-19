@@ -1,0 +1,52 @@
+<div class='loading-wrapper'>
+  <style>
+    html, body {
+      background-color: #FFFFFF;
+    }
+  </style>
+  
+  <div class='loading-text'>
+    <h1>loading workspace </h1>
+    <br />
+    <h1 id='loading-text'>&nbsp;</h1>
+  </div>
+
+  <script type='text/javascript'>
+    var cnt = 0;
+    var loop = function() {
+      if(cnt == 3) cnt = 0;
+      cnt++;
+      $('#loading-text').text('.'.repeat(cnt))
+    }
+
+    // loading loop.
+    setInterval(loop, 700);
+
+    var assignment_id = localStorage.getItem('assignment_id');
+
+    console.log('I: Loading assignment -> ', assignment_id);
+
+    $.ajax({
+      type: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authentication': $.cookie('triton_userapikey')
+      },
+      url: triton.url+'/workspaces/mine/start',
+      data: JSON.stringify({
+        id: assignment_id
+      }),
+      success: function(data) {
+        if(!data) return console.error('Invalid Response from Server', data);
+        if(!data.success) return console.error('Recieved success=false', data);
+
+        console.log('I: Workspace start, got:', data);
+
+        console.log('I: Workspace started, giving grace period.')
+        setTimeout(function() {
+          window.location.href = window.API_CONFIG.ide;
+        }, 6000)
+      }
+    })
+  </script>
+</div>

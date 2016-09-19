@@ -42,14 +42,15 @@ class Router {
 
     let resolver = () => {
       console.log('router: started pace');
-      Pace.start();
 
       let page = document.location.hash.replace(/^#/, '');
+      if(page === '') page = '/'; // check for non-existent index route.
 
       console.log('router: page ->', page);
 
       $('#dom').css('background', '#FFFFFF');
-      if(page !== '/login') {
+      $('#dom').html('')
+      if(page !== '/login' && page !== '/register') {
         $('#bg-stars').hide();
       } else {
         $('#bg-stars').show();
@@ -60,27 +61,35 @@ class Router {
 
         if(p.path !== page) return;
 
-        console.log('router: page hit on index:', i)
-        console.log('router: route ->', p);-
+        console.log('router: page hit on index:', i);
+        console.log('router: route ->', p);
 
-        p.code();
+        // TODO: This is a race condition; fix.
+        p.code(() => {
+          // done state.
+          $(document).ready(() => {
+            console.log('router: finished loading anything');
+
+            console.log('router: executing bind(s)')
+            this.binds.forEach(b => {
+              b.code();
+            });
+
+            Pace.stop();
+          })
+        });
 
         i++;
       });
-
-      $(document).ready(() => {
-        console.log('router: finished loading anything');
-
-        console.log('router: executing bind(s)')
-        this.binds.forEach(b => {
-          b.code();
-        });
-
-        Pace.stop();
-      })
     };
 
-    window.onhashchange = resolver;
+    window.onhashchange = () => {
+      Pace.start({
+        document: false
+      });
+
+      resolver();
+    }
 
     resolver();
   }
@@ -121,23 +130,48 @@ let triton = new Triton($)
 let router = new Router();
 
 let login  = new Route('/login');
-login.use(() => {
+login.use(done => {
   $('#dom').css('background', "url('/css/img/bg-main.png')")
   $('#dom').html(TRITON.templates["login"]());
+
+  return done();
+})
+
+let register  = new Route('/register');
+register.use(done => {
+  $('#dom').css('background', "url('/css/img/bg-main.png')")
+  $('#dom').html(TRITON.templates["register"]());
+
+  return done();
 })
 
 let index  = new Route('/');
-index.use(() => {
+index.use(done => {
   $('#dom').html(TRITON.templates["index"]());
+  return done();
 });
 
 let dash   = new Route('/dashboard');
-dash.use(() => {
+dash.use(done => {
   triton.get('users').then((data) => {
-    let image = 'http://www.gravatar.com/avatar/' + md5(data.email);
+    let image = gravatar(data.email, {
+      size: 200
+    })
     let info  = data.display_name;
 
-    triton.get('assignments/list').then(function(ASL) {
+    triton.get('assignments/list').then(ASL => {
+      ASL.forEach(assignment => {
+        let date = assignment.created;
+
+        let created = new moment(assignment.created).format(
+          'MM/DD/YY'
+        );
+        console.log('eval date to', created)
+
+        assignment.json    = JSON.stringify(assignment);
+        assignment.created = created;
+      })
+
       // still feeling the pain of missing Ember.js while hating it. Hmmmm...
       $('#dom').html(TRITON.templates["dashboard"]({
         header: TRITON.templates["dash_header"]({
@@ -147,14 +181,18 @@ dash.use(() => {
         assignments: ASL,
         footer: TRITON.templates["dash_footer"]()
       }));
+
+      return done();
     });
   });
 });
 
 let sett   = new Route('/dashboard/settings');
-sett.use(() => {
+sett.use(done => {
   triton.get('users').then((data) => {
-    let image = 'http://www.gravatar.com/avatar/' + md5(data.email);
+    let image = gravatar(data.email, {
+      size: 200
+    })
     let info  = data.display_name;
 
     $('#dom').html(TRITON.templates["settings"]({
@@ -166,18 +204,70 @@ sett.use(() => {
       display_name: data.display_name,
       email: data.email
     }));
+
+    return done();
   });
 });
 
 let logout = new Route('/dashboard/logout');
-logout.use(() => {
+logout.use(done => {
   triton.invalidateCache('assignments/list');
 
-  $.cookie('triton_userapikey', undefined);
+  $.cookie('triton_userapikey', undefined, {
+    path: '/',
+    domain: 'tritonjs.com'
+  });
+  $.cookie('triton_username', undefined, {
+    path: '/',
+    domain: 'tritonjs.com'
+  })
 
   window.location = '/';
 
   console.log('logged out user');
+
+  return done();
+});
+
+let loading = new Route('/workspace');
+loading.use(done => {
+  $('#dom').html(TRITON.templates["loading"]());
+
+  return done();
+})
+
+let assigninfo = new Route('/dashboard/assignment');
+assigninfo.use(done => {
+  if(!$.cookie('triton_assignmentinfo')) {
+    return window.location.hash = '/dashboard';
+  }
+
+  var assignment;
+
+  // prevent fail from ruining *everything*
+  try {
+    assignment = JSON.parse($.cookie('triton_assignmentinfo'));
+  } catch(err) {
+    $.cookie('triton_assignmentinfo', undefined);
+    return window.location.hash = '/dashboard';
+  }
+  triton.get('users').then((data) => {
+    let image = gravatar(data.email, {
+      size: 200
+    })
+    let info  = data.display_name;
+
+    $('#dom').html(TRITON.templates["assigninfo"]({
+      header: TRITON.templates["dash_header"]({
+        image: image,
+        info: info
+      }),
+      footer: TRITON.templates["dash_footer"](),
+      assignment: assignment
+    }));
+
+    return done();
+  });
 });
 
 router.use(index);
@@ -185,6 +275,10 @@ router.use(login);
 router.use(dash);
 router.use(sett);
 router.use(logout);
+router.use(loading);
+router.use(register);
+router.use(assigninfo);
+
 
 window['ROUTER'] = router;
 

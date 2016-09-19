@@ -1,0 +1,95 @@
+<div class='login'>
+  <div class="container">
+
+    <div class='login-header'>
+      <img src="/css/img/twN.png" />
+    </div>
+
+    <div class='login-container'>
+      <div class='login-header-text'>
+        <h2>Register</h2>
+      </div>
+
+      <!-- Email Form -->
+      <form role="form" class="form-group label-floating" data-toggle="validator">
+        <label for="text" class="control-label">Display Name</label>
+        <input id="register-dn" type="text" class="form-control" data-error="Required" required autofocus autocomplete="off">
+        <div class="help-block with-errors"></div>
+      </form>
+
+      <form id='un-form' role="form" class="form-group label-floating" data-toggle="validator">
+        <label for="text" class="control-label">Username</label>
+        <input id="register-un" type="text" class="form-control" data-error="Username please." required autofocus autocomplete="off">
+        <div class="help-block with-errors"></div>
+      </form>
+
+      <form role="form" class="form-group label-floating" data-toggle="validator">
+        <label for="email" class="control-label">Email</label>
+        <input id="register-email" type="email" class="form-control" data-error="Email please." required autofocus autocomplete="off">
+        <div class="help-block with-errors"></div>
+      </form>
+
+      <form class="form-group label-floating is-empty">
+        <label for="password" class="control-label">Password</label>
+        <input id="register-password" type="password" class="form-control" required>
+      </form>
+
+      <br />
+      <button id='register-submit' class="btn btn-lg btn-primary btn-block" type="submit">
+          Sign in
+      </button>
+    </div>
+
+    <div class='signup'>
+      No wait, I have an account!&nbsp;&nbsp;<a href="/#/login" class="new-account">Sign In</a>
+    </div
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#register-submit').on('click', () => {
+    register();
+  });
+  $("#register-password").keyup(function(event){
+      if(event.keyCode == 13){
+          register()
+      }
+  });
+
+  function errorElem(elem) {
+    elem.addClass('has-error');
+    elem.addClass('has-danger')
+    var err = ' \
+    <ul class="list-unstyled"> \
+       <li>{{TEXT}}</li> \
+    </ul> \
+    ';
+
+    err = err.replace('{{TEXT}}', elem.find($('input')).attr('data-error'))
+    console.log('err:', err);
+
+    elem.find($('.help-block')).html(err)
+  }
+
+  function unerrorElem(elem) {
+    elem.removeClass('has-error');
+    elem.removeClass('has-danger');
+
+    elem.find($('.help-block')).html('')
+  }
+
+  $('#register-un').focusout(function() {
+    // validate non \W, and check if username is available.
+    var elem   = $('#register-un');
+    var parent = $('#un-form');
+    var val    = elem.val();
+
+    if(/\W/.test(val)) {
+      elem.attr('data-error', 'Invalid Input, A-Z0-9_ only.')
+      errorElem(parent)
+      return;
+    }
+
+    unerrorElem(parent);
+  });
+</script>

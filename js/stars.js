@@ -105,7 +105,10 @@ var BGStars = function()
 }
 
 let main = () => {
-  if(window.location.hash !== '#/login') return console.info('not generating stars');
+  if(
+    window.location.hash !== '#/login' &&
+    window.location.hash !== '#/register'
+  ) return console.info('not generating stars');
 
   $("#bg-stars").attr("width", $(window).width());
   $("#bg-stars").attr("height", $(window).height());

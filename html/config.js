@@ -1,6 +1,8 @@
 // UI Config.
 
 window.API_CONFIG = {
-  host: "http://127.0.0.1:8000",
+  host: "https://api.tritonjs.com",
+  ide: "https://ide.tritonjs.com",
+  cdomain: "tritonjs.com",
   version: "1"
 }

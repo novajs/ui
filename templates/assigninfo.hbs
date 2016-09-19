@@ -1,0 +1,54 @@
+{{{header}}}
+  <div class='settings-wrapper'>
+    <div class='settings-title'>
+      <h1 style='font-size:2em;'>{{assignment.name}}</h1>
+    </div>
+
+    <br /><br />
+    <div class='assigninfo'>
+      <h3>Description</h3>
+      <p>
+        {{assignment.info.desc}}
+      </p>
+
+      <h3>Created</h3>
+      <div style='display: none' id='created-before'>{{assignment.created}}</div>
+      <p id='created-after'></p>
+
+      <h3>Due Date</h3>
+      <p>Not Implemented</p>
+
+      <h3>Actions</h3>
+      <div class='assignopts'>
+        <button id='assignopt' class='btn btn-primary' data-action='finish' disabled>
+          Turn In
+        </button>
+
+        <button id='assignopt' class='btn btn-primary btn-danger' data-action='reset' disabled>
+          Reset
+        </button>
+      </div>
+
+      <br /><br />
+
+      <script type="text/javascript">
+        var created = parseInt($('#created-before').html().replace(/\s/g, ""));
+        console.log('JIT parse date:', created);
+        $('#created-after').html(new moment(created).format(
+          'MM/DD/YY'
+        ));
+
+        $('#assignopt').on('click', function() {
+          var selector = $(this).attr('data-action');
+
+          console.log('ASSIGNINFO: action ->', selector);
+          if(selector === 'reset') { // reset assignment
+
+          } else if(selector === 'finish') {
+
+          }
+        })
+      </script>
+    </div>
+  </div>
+{{{footer}}}
