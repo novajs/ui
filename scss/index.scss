@@ -21,6 +21,22 @@
   box-align:center;
 }
 
+.notice {
+  $height: 75px;
+
+  height: $height;
+  background-color: #f39c12;
+  width:100%;
+
+  text-align: center;
+
+  .text {
+    font-size: 1.8em;
+    color: #FFFFFF;
+    line-height: $height;
+  }
+}
+
 .index-wrapper,
 body,
 html {
