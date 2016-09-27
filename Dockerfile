@@ -1,10 +1,4 @@
-FROM nginx
-
-# install node js
-RUN apt-get update
-RUN apt-get install -y curl sudo
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get install -y nodejs
+FROM sinet/nginx-node:latest
 
 # Install gulp-cli
 RUN npm install -g gulp-cli
@@ -12,17 +6,13 @@ RUN npm install -g gulp-cli
 # clean html dir
 RUN rm -rf /usr/share/nginx/html
 
-# Environment variables
-ENV TERM xterm
-
 # Set WORKDIR
 WORKDIR /usr/share/nginx
 
 # Add our files & set working dir
 ADD . /usr/share/nginx
-RUN chmod +x /usr/share/nginx/container.sh
 
-RUN npm install
+RUN npm install; npm rebuild node-sass
 
 # Run Gulp
 RUN gulp
