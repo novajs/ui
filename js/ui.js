@@ -165,6 +165,12 @@ let login = () => {
         domain: window.API_CONFIG.cdomain
       })
 
+			if(data.data.role === 'admin') {
+				window.isadmin = true;
+				return window.location.hash = '/admin';
+			}
+
+			// Default show dash.
       window.location.hash = '/dashboard';
     }
   })

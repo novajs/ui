@@ -8,8 +8,6 @@
 
 'use strict';
 
-
-
 class Route {
   constructor(path, use) {
     console.log('constructed a new route');
@@ -270,9 +268,30 @@ assigninfo.use(done => {
   });
 });
 
+let admindash   = new Route('/admin');
+admindash.use(done => {
+  triton.get('users').then((data) => {
+    let image = gravatar(data.email, {
+      size: 200
+    })
+    let info  = data.display_name;
+
+    $('#dom').html(TRITON.templates["admindash"]({
+      header: TRITON.templates["admindash_header"]({
+        image: image,
+        info: info
+      }),
+      footer: TRITON.templates["dash_footer"]()
+    }));
+
+    return done();
+  });
+});
+
 router.use(index);
 router.use(login);
 router.use(dash);
+router.use(admindash);
 router.use(sett);
 router.use(logout);
 router.use(loading);
