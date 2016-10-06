@@ -208,18 +208,19 @@ let logout = new Route('/dashboard/logout');
 logout.use(done => {
   triton.invalidateCache('assignments/list');
 
-  $.cookie('triton_userapikey', undefined, {
+  $.removeCookie('triton_userapikey', {
     path: '/',
     domain: window.API_CONFIG.cdomain
   });
-  $.cookie('triton_username', undefined, {
+  $.removeCookie('triton_username',  {
     path: '/',
     domain: window.API_CONFIG.cdomain
   })
 
   window.location.href = '/';
 
-  console.log('logged out user');
+  console.log('DEBUG: cdomain ->', window.API_CONFIG.cdomain);
+  console.log('LOGIN: Logged out current user');
 
   return done();
 });
