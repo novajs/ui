@@ -2,8 +2,6 @@
 
 	'use strict';
 
-
-
 	// iPad and iPod detection
 	var isiPad = function(){
 		return (navigator.platform.indexOf("iPad") != -1);
@@ -21,11 +19,8 @@
 		$(window).stellar();
 	};
 
-
-
 	// Burger Menu
 	var burgerMenu = function() {
-
 		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
 
 			event.preventDefault();
@@ -35,16 +30,12 @@
 			} else {
 				$(this).addClass('active');
 			}
-
-
-
 		});
 
 	};
 
 
 	var goToTop = function() {
-
 		$('.js-gotop').on('click', function(event){
 
 			event.preventDefault();
@@ -55,13 +46,10 @@
 
 			return false;
 		});
-
 	};
-
 
 	// Page Nav
 	var clickMenu = function() {
-
 		$('#navbar a:not([class="external"])').click(function(event){
 			var section = $(this).data('nav-section'),
 				navbar = $('#navbar');
@@ -81,8 +69,6 @@
 		    event.preventDefault();
 		    return false;
 		});
-
-
 	};
 
 	// Reflect scrolling in navigation
@@ -128,7 +114,6 @@
 		var lastScrollTop = 0;
 
 		$(window).scroll(function(event){
-
 		   	var header = $('#fh5co-header'),
 				scrlTop = $(this).scrollTop();
 
