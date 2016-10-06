@@ -270,7 +270,8 @@ assigninfo.use(done => {
 
 let admindash   = new Route('/admin');
 admindash.use(done => {
-  triton.get('users').then((data) => {
+  triton.get('users').then(data => {
+    console.log('users:', data);
     let image = gravatar(data.email, {
       size: 200
     })
@@ -281,6 +282,7 @@ admindash.use(done => {
         image: image,
         info: info
       }),
+      name: data.display_name.split(' ')[0],
       footer: TRITON.templates["dash_footer"]()
     }));
 

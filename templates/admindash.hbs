@@ -1,16 +1,115 @@
 {{{header}}}
-  <script type="text/javascript">if(!window.isadmin) window.location.hash = '/dashboard'</script>
-  
-  <h1>Hello, admin!</h1>
+  <style>
+    .value {
+      font-weight: bold;
+    }
 
+    .stats {
+      text-align: center;
+    }
+
+    .property {
+      display: inline-block;
+      padding: 7px;
+      width: 150px;
+      text-align: center;
+
+      border-right: 1px solid #e5e5e5;
+    }
+
+    .property .name {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .last {
+      border-right: none;
+    }
+
+    .property .value {
+      font-size: 1.3em;
+    }
+  </style>
   <script type="text/javascript">
-    /* $('.Assignment').on('click', function(elem) {
-      var json = $(this).attr('data-json');
-      $.cookie('triton_assignmentinfo', json, {
-        path: '/',
-        domain: window.API_CONFIG.domain
+    if(!window.isadmin) {
+      console.log('Not Admin')
+      window.location.hash = '/dashboard'
+    }
+
+    console.log('Is Admin')
+  </script>
+  <div class='settings-wrapper'>
+    <h2>Welcome, {{name}}!</h2>
+
+    <br /><br />
+    <h4 style='text-align:center'>Quick Overview</h4>
+
+    <br />
+    <div class='stats'>
+      <div class='property'>
+        <div class='name'>
+          Users
+        </div>
+        <div id='users-value' class='value'>
+          ...
+        </div>
+      </div>
+
+      <div class='property'>
+        <div class='name'>
+          Assignments
+        </div>
+        <div id='assignments-value' class='value'>
+          ...
+        </div>
+      </div>
+
+      <div class='property last'>
+        <div class='name'>
+          Workspaces
+        </div>
+        <div class='value'>
+          ...
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+    <h3>Users </h3>
+    <br />
+    <table id="user-list" class="display" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Active</th>
+          <th>Username</th>
+          <th>ID</th>
+          <th>Kind</th>
+          <th>E-Mail</th>
+        </tr>
+      </thead>
+    </table>
+
+  </div>
+
+  <script type="text'/javascript">
+    triton.get('users/list').then(function(users) {
+      console.log('users:', 'got', users.length);
+
+      var t = $('#user-list').DataTable();
+
+      users.forEach(function(user) {
+        console.log('list user:', user)
+        var ta = ['Active', user.username, user.id, user.role, user.email];
+        t.row.add(ta).draw(false);
       })
-      window.location.hash = '/dashboard/assignment';
-    }) */
+
+      $('#users-value').html(users.length);
+    })
+
+    triton.get('assignments/list').then(function(asl) {
+      console.log('assignments:', 'got', asl.length);
+
+      $('#assignments-value').html(asl.length);
+    });
   </script>
 {{{footer}}}
