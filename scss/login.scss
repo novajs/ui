@@ -15,7 +15,7 @@
 .login {
   height:100%;
   width:100%;
-  background-color: transparent;
+  background-color: #0080ff;
   z-index:10 !important;
 }
 
@@ -28,13 +28,13 @@
 
 .login .container {
   margin:0 auto;
-  width:350px;
+  width:400px;
 }
 
 .login-header {
   text-align: center;
   font-size: 3.5em;
-  font-weight: 100;
+  font-weight: 300;
 
   font-family: 'Roboto', sans-serif;
 
@@ -43,8 +43,6 @@
   color: #FFFFFF;
 
   margin-bottom:10px;
-
-  background: url('img/bg-main.png') repeat 0% 0%;
 }
 
 .login-header sub {
@@ -62,10 +60,6 @@
   padding-top:20px;
   background-color:#FFFFFF;
   border-radius:5px;
-
-  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);
 }
 
 .login .container .user-image {

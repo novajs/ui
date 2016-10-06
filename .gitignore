@@ -1,5 +1,4 @@
 public/index.html
-public/js
 public/css/*.css
 node_modules
 *.log

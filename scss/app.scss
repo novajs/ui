@@ -10,12 +10,6 @@
     box-shadow:none !important;
 }
 
-#bg-stars {
-  position:fixed;
-  z-index:1;
-  pointer-events: none;
-}
-
 
 /* Change the white to any color ;) */
 input:-webkit-autofill {
@@ -24,11 +18,6 @@ input:-webkit-autofill {
 
 html,
 body {
-  height:100%;
-  width:100%;
-
-  overflow:hidden;
-
   font-family: 'Dosis', sans-serif;
 }
 

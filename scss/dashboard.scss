@@ -2,13 +2,13 @@
   margin-bottom:0 !important;
 }
 
-.navbar-header,
-.navbar-default,
-.navbar-brand {
+#navbar-header,
+#navbar-default,
+#navbar-brand {
   height:75px !important;
 }
 
-.navbar-header {
+#navbar-header {
   margin:0;
   padding:0;
 
@@ -25,19 +25,19 @@
   width:270px;
 }
 
-.navbar-header img {
+#navbar-header img {
   display:inline-block;
   height: 35px;
   width: auto;
 }
-.navbar-header span {
+#navbar-header span {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
 
   font-size:2.5em;
 }
 
-.navbar-default {
+#navbar-default {
   z-index: 10;
   background-color: #f7f7f7 !important;
 

@@ -48,11 +48,6 @@ class Router {
 
       $('#dom').css('background', '#FFFFFF');
       $('#dom').html('')
-      if(page !== '/login' && page !== '/register') {
-        $('#bg-stars').hide();
-      } else {
-        $('#bg-stars').show();
-      }
 
       let i = 0;
       this.routes.forEach(p => {
@@ -129,7 +124,6 @@ let router = new Router();
 
 let login  = new Route('/login');
 login.use(done => {
-  $('#dom').css('background', "url('/css/img/bg-main.png')")
   $('#dom').html(TRITON.templates["login"]());
 
   return done();
@@ -137,7 +131,6 @@ login.use(done => {
 
 let register  = new Route('/register');
 register.use(done => {
-  $('#dom').css('background', "url('/css/img/bg-main.png')")
   $('#dom').html(TRITON.templates["register"]());
 
   return done();
