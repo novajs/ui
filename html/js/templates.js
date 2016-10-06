@@ -13,7 +13,7 @@ this["TRITON"]["templates"]["admindash"] = Handlebars.template({"compiler":[6,">
 this["TRITON"]["templates"]["admindash_header"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<div class=\"navbar navbar-default\">\n  <div>\n    <div class=\"navbar-header\">\n      <img src=\"/css/img/tbN.png\" />\n    </div>\n  </div>\n</div>\n\n<!-- UI Wrapper -->\n<div class='ui'>\n  <div class='sidebar'>\n    <div class='user-profile'>\n      <div class='user-image-dash'>\n        <img src=\""
+  return "<div class=\"navbar navbar-default\">\n  <div>\n    <div id='navbar-header' class=\"navbar-header\">\n      <img src=\"/css/img/tbN.png\" />\n    </div>\n  </div>\n</div>\n\n<!-- UI Wrapper -->\n<div class='ui'>\n  <div class='sidebar'>\n    <div class='user-profile'>\n      <div class='user-image-dash'>\n        <img src=\""
     + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
     + "\" />\n      </div>\n\n      <div class='user-info'>\n        "
     + alias3(((helper = (helper = helpers.info || (depth0 != null ? depth0.info : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"info","hash":{},"data":data}) : helper)))
@@ -43,7 +43,7 @@ this["TRITON"]["templates"]["dash_header"] = Handlebars.template({"compiler":[6,
     + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
     + "\" />\n      </div>\n\n      <div class='user-info'>\n        "
     + alias3(((helper = (helper = helpers.info || (depth0 != null ? depth0.info : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"info","hash":{},"data":data}) : helper)))
-    + "\n      </div>\n\n\n      <ul class='nav-links'>\n        <a id='nu' href=\"#/dashboard\"><li>Assignments</li></a>\n        <a id='nu' href=\"#/dashboard/settings\"><li>Settings</li></a>\n        <a id='nu' href=\"#/contact\"><li>Contact</li></a>\n        <a id='nu' href=\"#/dashboard/logout\"><li>Log Out</li></a>\n      </ul>\n    </div>\n  </div>\n\n  <div class='content'>\n";
+    + "\n      </div>\n\n\n      <ul class='nav-links'>\n        <a id='nu' href=\"#/dashboard\"><li>Assignments</li></a>\n        <a id='nu' href=\"#/dashboard/settings\"><li>Settings</li></a>\n        <!-- <a id='nu' href=\"#/contact\"><li>Contact</li></a> -->\n        <a id='nu' href=\"#/dashboard/logout\"><li>Log Out</li></a>\n      </ul>\n    </div>\n  </div>\n\n  <div class='content'>\n";
 },"useData":true});
 this["TRITON"]["templates"]["dashboard"] = Handlebars.template({"1":function(depth0,helpers,partials,data,blockParams) {
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;
