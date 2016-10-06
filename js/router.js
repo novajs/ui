@@ -124,6 +124,10 @@ let router = new Router();
 
 let login  = new Route('/login');
 login.use(done => {
+  if($.cookie('triton_userapikey')) {
+    console.log('LOGIN: already set cookie, go ahead...');
+    return window.location.hash = '/dashboard';
+  }
   $('#dom').html(TRITON.templates["login"]());
 
   return done();
