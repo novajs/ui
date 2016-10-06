@@ -217,7 +217,7 @@ logout.use(done => {
     domain: window.API_CONFIG.cdomain
   })
 
-  window.location = '/';
+  window.location.href = '/';
 
   console.log('logged out user');
 
