@@ -43,7 +43,7 @@ this["TRITON"]["templates"]["dash_header"] = Handlebars.template({"compiler":[6,
     + alias3(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"image","hash":{},"data":data}) : helper)))
     + "\" />\n      </div>\n\n      <div class='user-info'>\n        "
     + alias3(((helper = (helper = helpers.info || (depth0 != null ? depth0.info : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"info","hash":{},"data":data}) : helper)))
-    + "\n      </div>\n\n\n      <ul class='nav-links'>\n        <a id='nu' href=\"#/dashboard\"><li>Assignments</li></a>\n        <a id='nu' href=\"#/dashboard/settings\"><li>Settings</li></a>\n        <a id='nu' href=\"#/contact\"><li>Contact</li></a>\n      </ul>\n    </div>\n  </div>\n\n  <div class='content'>\n";
+    + "\n      </div>\n\n\n      <ul class='nav-links'>\n        <a id='nu' href=\"#/dashboard\"><li>Assignments</li></a>\n        <a id='nu' href=\"#/dashboard/settings\"><li>Settings</li></a>\n        <a id='nu' href=\"#/contact\"><li>Contact</li></a>\n        <a id='nu' href=\"#/dashboard/logout\"><li>Log Out</li></a>\n      </ul>\n    </div>\n  </div>\n\n  <div class='content'>\n";
 },"useData":true});
 this["TRITON"]["templates"]["dashboard"] = Handlebars.template({"1":function(depth0,helpers,partials,data,blockParams) {
     var stack1, alias1=this.lambda, alias2=this.escapeExpression;

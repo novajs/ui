@@ -210,11 +210,11 @@ logout.use(done => {
 
   $.cookie('triton_userapikey', undefined, {
     path: '/',
-    domain: 'tritonjs.com'
+    domain: window.API_CONFIG.cdomain
   });
   $.cookie('triton_username', undefined, {
     path: '/',
-    domain: 'tritonjs.com'
+    domain: window.API_CONFIG.cdomain
   })
 
   window.location = '/';
