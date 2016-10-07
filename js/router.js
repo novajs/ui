@@ -221,6 +221,7 @@ logout.use(done => {
     path: '/',
     domain: window.API_CONFIG.cdomain
   })
+  $.removeCookie('triton_isadmin');
 
   window.location.href = '/';
 
