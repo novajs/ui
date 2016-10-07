@@ -166,7 +166,7 @@ let login = () => {
       })
 
 			if(data.data.role === 'admin') {
-				window.isadmin = true;
+				$.cookie('triton_isadmin', true);
 				return window.location.hash = '/admin';
 			}
 

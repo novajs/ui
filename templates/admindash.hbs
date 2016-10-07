@@ -31,9 +31,8 @@
     }
   </style>
   <script type="text/javascript">
-    if(!window.isadmin) {
-      console.log('Not Admin')
-      window.location.hash = '/dashboard'
+    if(!$.cookie('triton_isadmin') {
+      return window.location.hash = '/dashboard'
     }
 
     console.log('Is Admin')
