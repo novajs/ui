@@ -128,6 +128,7 @@ login.use(done => {
     console.log('LOGIN: already set cookie, go ahead...');
     return window.location.hash = '/dashboard';
   }
+
   $('#dom').html(TRITON.templates["login"]());
 
   return done();
@@ -148,6 +149,10 @@ index.use(done => {
 
 let dash   = new Route('/dashboard');
 dash.use(done => {
+  if(!$.cookie('triton_userapikey')) {
+    return window.location.hash = '/login';
+  }
+
   triton.get('users').then((data) => {
     let image = gravatar(data.email, {
       size: 200
