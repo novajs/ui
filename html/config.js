@@ -1,12 +1,12 @@
 // UI Config.
 
 window.API_CONFIG = {
-  host: "https://api.tritonjs.com",
-  ide: "https://ide.tritonjs.com",
-  cdomain: ".tritonjs.com",
+  host: "http://127.0.0.1:8080",
+  ide: "http://127.0.0.1:8001",
+  cdomain: "127.0.0.1",
   version: "1",
   sentry: {
-    enabled: true,
+    enabled: false,
     SDN: "https://e54b05b10f4f4cfa83ed2fa078bdae79@sentry.tritonjs.com/1"
   }
 }

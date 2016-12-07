@@ -46,6 +46,9 @@
         setTimeout(function() {
           window.location.href = window.API_CONFIG.ide;
         }, 10000)
+      },
+      error: function(xhr, status, err) {
+        console.log('got error', status, err);
       }
     })
   </script>
