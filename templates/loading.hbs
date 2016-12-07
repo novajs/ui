@@ -3,12 +3,22 @@
     html, body {
       background-color: #FFFFFF;
     }
+
+    #loading-error a {
+      color: #4c4c4c !important;
+      text-decoration: underline;
+    }
   </style>
 
   <div class='loading-text'>
-    <h1>loading workspace </h1>
+    <h1 id='loading-words'>loading workspace </h1>
     <br />
     <h1 id='loading-text'>&nbsp;</h1>
+    <p id='loading-error' style='display:none;'>
+      We're sorry, an error occured.
+      Please <a href="/#/dashboard">Click Here</a> to
+      return to the dashboard.
+    </p>
   </div>
 
   <script type='text/javascript'>
@@ -48,7 +58,12 @@
         }, 10000)
       },
       error: function(xhr, status, err) {
-        console.log('got error', status, err);
+        if(!err) return;
+
+        $('#loading-words').html(err);
+        $('#loading-words').css('color', 'rgb(252, 91, 63)')
+        $('#loading-error').show();
+        $('#loading-text').hide();
       }
     })
   </script>
