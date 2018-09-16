@@ -1,4 +1,4 @@
-![Triton](https://github.com/tritonjs/ui/raw/master/public/css/img/tb.png)
+![Triton](https://github.com/tritonjs/ui/raw/master/html/css/img/tb.png)
 
 User Interface for a Modern Open Source Classroom.
 
